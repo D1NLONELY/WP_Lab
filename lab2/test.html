@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎓 Student Universe Profile</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #3494E6, #EC6EAD);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .marquee-top, .marquee-bottom {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .marquee-top marquee, .marquee-bottom marquee {
+            width: 100%;
+        }
+
+        .marquee-top img, .marquee-bottom img {
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .form-galaxy {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 600px;
+            margin: 20px 0;
+        }
+
+        .cosmic-input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #3494E6;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cosmic-input:focus {
+            outline: none;
+            border-color: #EC6EAD;
+            box-shadow: 0 0 15px rgba(236,110,173,0.3);
+        }
+
+        .star-button {
+            background: linear-gradient(45deg, #3494E6, #EC6EAD);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .star-button:hover {
+            transform: scale(1.05);
+        }
+
+        .radio-constellation, .checkbox-constellation {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+        }
+
+        .form-section {
+            margin-bottom: 15px;
+        }
+
+        .date-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .date-input select {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #3494E6;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Top Marquee (Right to Left) -->
+        <div class="marquee-top">
+            <marquee behavior="scroll" direction="right">
+                <img src="./img/Untitled.jpeg" alt="Marquee Image">
+            </marquee>
+        </div>
+
+        <!-- Form Content -->
+        <div class="form-galaxy">
+            <h1>🚀 Student Universe Profile</h1>
+            
+            <div class="form-section">
+                <input type="text" placeholder="🌟 Full Name" class="cosmic-input" required>
+                <input type="email" placeholder="📧 Email Address" class="cosmic-input" required>
+                
+                <div class="form-section">
+                    <label>Date of Birth</label>
+                    <div class="date-input">
+                        <select>
+                            <option>Day</option>
+                            <?php for($i=1; $i<=31; $i++): ?>
+                                <option value="<?= $i ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        </select>
+                        <select>
+                            <option>Month</option>
+                            <option>January</option>
+                            <option>February</option>
+                            <option>March</option>
+                            <option>April</option>
+                            <option>May</option>
+                            <option>June</option>
+                            <option>July</option>
+                            <option>August</option>
+                            <option>September</option>
+                            <option>October</option>
+                            <option>November</option>
+                            <option>December</option>
+                        </select>
+                        <select>
+                            <option>Year</option>
+                            <?php for($i=1990; $i<=2010; $i++): ?>
+                                <option value="<?= $i ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="radio-constellation">
+                    <label>
+                        <input type="radio" name="gender"> 👨 Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender"> 👩 Female
+                    </label>
+                    <label>
+                        <input type="radio" name="gender"> 🌈 Other
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label>Contact Number</label>
+                <input type="tel" placeholder="📱 Mobile Number" class="cosmic-input" required>
+            </div>
+
+            <div class="form-section">
+                <h3>🎨 Interests</h3>
+                <div class="checkbox-constellation">
+                    <label>
+                        <input type="checkbox"> 💻 Technology
+                    </label>
+                    <label>
+                        <input type="checkbox"> 🎨 Arts
+                    </label>
+                    <label>
+                        <input type="checkbox"> 🏀 Sports
+                    </label>
+                </div>
+            </div>
+
+            <button class="star-button">🚀 Launch Profile</button>
+        </div>
+
+        <!-- Bottom Marquee (Left to Right) -->
+        <div class="marquee-bottom">
+            <marquee behavior="scroll" direction="left">
+                <img src="./img/Untitled.jpeg" alt="Marquee Image">
+            </marquee>
+        </div>
+    </div>
+</body>
+</html>
