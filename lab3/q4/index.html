@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Changer</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Choose a Background Color</h2>
+    <form>
+        <label>
+            <input type="radio" name="color" value="red" onclick="changeBackgroundColor()"> Red
+        </label><br>
+        <label>
+            <input type="radio" name="color" value="blue" onclick="changeBackgroundColor()"> Blue
+        </label><br>
+        <label>
+            <input type="radio" name="color" value="green" onclick="changeBackgroundColor()"> Green
+        </label><br>
+    </form>
+
+    <script>
+        function changeBackgroundColor() {
+            let selectedColor = document.querySelector('input[name="color"]:checked').value;
+            if (selectedColor === "red") {
+                document.body.style.backgroundColor = "red";
+            } else if (selectedColor === "blue") {
+                document.body.style.backgroundColor = "blue";
+            } else if (selectedColor === "green") {
+                document.body.style.backgroundColor = "green";
+            }
+        }
+    </script>
+
+</body>
+</html>
