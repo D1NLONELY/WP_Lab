@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #result {
+            font-weight: bold;
+            background-color: #e3e3e3;
+        }
+</style>
+</head>
+<body>
+    <div class="calculator">
+<h2>Simple Calculator</h2>
+<input type="text" id="num1" placeholder="Enter first number">
+<input type="text" id="num2" placeholder="Enter second number">
+<br>
+<div class="buttons">
+<button onclick="calculate('+')">+</button>
+<button onclick="calculate('-')">-</button>
+<button onclick="calculate('*')">*</button>
+<button onclick="calculate('/')">/</button>
+<button onclick="clearFields()">Clear</button>
+</div>
+<input type="text" id="result" placeholder="Result" readonly>
+</div>
+    <script>
+        function calculate(operator) {
+            var num1 = parseFloat($("#num1").val());
+            var num2 = parseFloat($("#num2").val());
+            if (isNaN(num1) || isNaN(num2)) {
+                $("#result").val("Invalid Input");
+                return;
+            }
+            var res;
+            switch(operator) {
+                case '+': res = num1 + num2; break;
+                case '-': res = num1 - num2; break;
+                case '*': res = num1 * num2; break;
+                case '/': 
+                    if (num2 === 0) {
+                        $("#result").val("Cannot divide by zero");
+                        return;
+                    }
+                    res = num1 / num2;
+                    break;
+                default: res = "Error";
+            }
+            $("#result").val(res);
+        }
+        function clearFields() {
+            $("#num1, #num2, #result").val("");
+        }
+</script>
+</body>
+</html>
+ 
