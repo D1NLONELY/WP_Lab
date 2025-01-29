@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball Animation</title>
+    <style>
+        #outerDiv {
+            height: 400px;
+            width: 400px;
+            background-color: #36a094;
+            position: relative;
+            overflow: hidden;
+        }
+        #bouncing-ball {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -25px; /* Center the ball */
+        }
+    </style>
+</head>
+<body>
+
+<div id="outerDiv">
+    <div id="bouncing-ball"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function bounce(bouncingCount, speed) {
+        var top = 200; // Initial bounce height
+        var speedRatio = speed / top; // Speed adjustment
+        var heightRatio = top / bouncingCount; // Height adjustment
+
+        for (var i = 1; i <= bouncingCount; i++) {
+            $('#bouncing-ball').animate({
+                bottom: top
+            }, speed);
+
+            $('#bouncing-ball').animate({
+                bottom: 0
+            }, speed / 2);
+
+            top -= heightRatio; // Decrease the bounce height
+            speed = speedRatio * top; // Adjust the speed based on height
+        }
+    }
+
+    $(document).ready(function() {
+        $("#bouncing-ball").click(function() {
+            bounce(10, 500); // Trigger bounce on click
+        });
+    });
+</script>
+
+</body>
+</html>
