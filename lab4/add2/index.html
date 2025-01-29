@@ -1,1 +1,62 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Sliding Text on Images</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        
+        .image-frame {
+            float: left;
+            position: relative;
+            margin: 5px;
+            color: #333;
+        }
+
+        .image-frame .image-caption {
+            display: none;
+            opacity: 0.8;
+            background: #cae5c1;
+            width: 150px;
+            position: absolute;
+            bottom: 0px;
+            padding: 5px;
+        }
+
+        /* Additional Styling */
+        .image-frame img {
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-frame">
+        <img src="Untitled1.jpeg" alt="Image 1">
+        <div class="image-caption">
+            <h2>PAWL</h2>
+            <p>BIG CAT</p>
+        </div>
+    </div>
+
+    <div class="image-frame">
+        <img src="Untitled2.jpeg" alt="Image 2">
+        <div class="image-caption">
+            <h2>CAT-ALINA</h2>
+            <p>SMOL CAT</p>
+        </div>
+    </div>
+
+    <script>
+        
+        $(document).ready(function() {
+            $('.image-frame').hover(function(){
+                $('.image-caption', this).slideToggle('slow');
+            }, function(){
+                $('.image-caption', this).slideToggle('slow');
+            });
+        });
+        [1]
+    </script>
+</body>
+</html>
