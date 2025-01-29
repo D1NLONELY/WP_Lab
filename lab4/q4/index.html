@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Purchase</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select, input[type="text"], input[type="checkbox"] {
+            margin: 5px 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Product Purchase</h2>
+    
+    <!-- Dropdown List for Companies -->
+    <label for="company">Select Company:</label>
+    <select id="company">
+        <option value="HP">HP</option>
+        <option value="Nokia">Nokia</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Motorola">Motorola</option>
+        <option value="Apple">Apple</option>
+    </select>
+
+    <br><br>
+
+    <!-- Checkboxes for Product Types -->
+    <label>Select Product Type(s):</label>
+    <label>
+        <input type="checkbox" id="mobile" value="Mobile"> Mobile
+    </label>
+    <label>
+        <input type="checkbox" id="laptop" value="Laptop"> Laptop
+    </label>
+
+    <br><br>
+
+    <!-- Buy Button -->
+    <button id="buyBtn">Buy</button>
+
+    <!-- Result Area (Total Price) -->
+    <div id="result"></div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#buyBtn').click(function() {
+            var selectedCompany = $('#company').val();
+            var selectedProducts = [];
+            if ($('#mobile').is(':checked')) {
+                selectedProducts.push('Mobile');
+            }
+            if ($('#laptop').is(':checked')) {
+                selectedProducts.push('Laptop');
+            }
+
+            // Prices for each company and product
+            var prices = {
+                HP: { Mobile: 500, Laptop: 1000 },
+                Nokia: { Mobile: 300, Laptop: 900 },
+                Samsung: { Mobile: 600, Laptop: 1200 },
+                Motorola: { Mobile: 350, Laptop: 950 },
+                Apple: { Mobile: 10000, Laptop: 15000 }
+            };
+
+            // Calculate total price
+            var totalPrice = 0;
+            selectedProducts.forEach(function(product) {
+                totalPrice += prices[selectedCompany][product];
+            });
+
+            // Display the result
+            if (selectedProducts.length > 0) {
+                $('#result').html('You bought: ' + selectedProducts.join(', ') + '<br>Total Price: $' + totalPrice);
+            } else {
+                $('#result').html('Please select at least one product.');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
