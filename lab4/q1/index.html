@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Table and Image Movement with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 300px;
+            border-collapse: collapse;
+            margin: 20px 0;
+            transition: transform 1s ease-in-out;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            width: 150px;
+            height: auto;
+            transition: transform 1s ease-in-out;
+        }
+
+        .move-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .move-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Table and Image Movement</h1>
+    <table id="myTable">
+        <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+            <th>Header 3</th>
+        </tr>
+        <tr>
+            <td>Data 1</td>
+            <td>Data 2</td>
+            <td>Data 3</td>
+        </tr>
+        <tr>
+            <td>Data 4</td>
+            <td>Data 5</td>
+            <td>Data 6</td>
+        </tr>
+        <tr>
+            <td>Data 7</td>
+            <td>Data 8</td>
+            <td>Data 9</td>
+        </tr>
+    </table>
+
+    <img id="myImage" src="Untitled.png" alt="Image">
+
+    <br>
+    <button class="move-btn" id="moveButton">Move Left</button>
+
+    <script>
+        $(document).ready(function() {
+            let Position = 0;
+
+            $('#moveButton').click(function() {
+                if (Position === 1) {
+                    $('#myTable, #myImage').css('transform', 'translateX(300px)');
+                    $('#moveButton').text('Move Centre');
+                    Position = 2
+                } 
+                else if (Position === 2){
+                    $('#myTable, #myImage').css('transform', 'translateX(0px)');
+                    $('#moveButton').text('Move Left');
+                    Position = 0;
+                }
+                else {
+                    $('#myTable, #myImage').css('transform', 'translateX(-300px)');
+                    $('#moveButton').text('Move Right');
+                    Position = 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
